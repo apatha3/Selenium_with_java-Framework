@@ -20,8 +20,6 @@ public class Signup extends BaseTest {
         WebElement drop = driver.findElement(By.cssSelector(".custom-select"));
         Select a = new Select(drop);
         a.selectByIndex(2);
-        // String value= driver.findElement(By.cssSelector(".custom-select")).getText();
-        //Assert.assertEquals(value,"Student");
         WebElement option = driver.findElement(By.xpath("//span[text()='Male']"));
         driver.findElement(with(By.tagName("input")).above(option)).click();
     }
