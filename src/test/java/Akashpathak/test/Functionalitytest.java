@@ -6,35 +6,25 @@ import Akashpathk.pageobjects.Cartpage;
 import Akashpathk.pageobjects.Loginpage;
 import Akashpathk.pageobjects.Paymentpage;
 import Akashpathk.pageobjects.Productscatpage;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.io.FileUtils;
-import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.ITestListener;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
-import static Akashpathak.testcomponents.BaseTest.driver;
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
+import static Akashpathk.pageobjects.Productscatpage.product;
+import static com.google.common.base.Ascii.equalsIgnoreCase;
 
-public class Learn extends BaseTest implements ITestListener {
+public class Functionalitytest extends BaseTest  {
     @Test (dataProvider="getdata")
     public void firsttest(HashMap<String,String> input) throws IOException, InterruptedException {
         Loginpage l= new Loginpage(driver);
@@ -89,9 +79,30 @@ public class Learn extends BaseTest implements ITestListener {
 
 
     }
+@Test(groups = "Within products page")
+    public void searchfiltertest(){
+        Loginpage log = new Loginpage(driver);
+        log.Loginaction("pathakakash006@gmail.com","Ap123456!");
+        Productscatpage p=new Productscatpage(driver);
+        p.enternameandsearch();
+        String receivedprod=  driver.findElement(By.cssSelector("h5[style*='text-transform']")).getText();
+        Assert.assertEquals(product,receivedprod);
+    }
+
+@Test(groups = "Within products page")
+    public void addproductandverify() throws InterruptedException {
+
+        Loginpage log = new Loginpage(driver);
+        log.Loginaction("pathakakash006@gmail.com","Ap123456!");
+        Productscatpage p1=new Productscatpage(driver);
+        p1.selectdesireditems();
+        p1.waitsimp(By.cssSelector("h5 b"));
+        p1.gotocart();
+        
 
 
 
+}
 
 
 }

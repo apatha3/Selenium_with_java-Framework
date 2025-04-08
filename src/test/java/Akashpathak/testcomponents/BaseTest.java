@@ -40,7 +40,7 @@ public class BaseTest {
     }
 
     public List<HashMap<String,String>> jsonda() throws IOException {
-        String jd= FileUtils.readFileToString(new File("C://Users//Akash Pathak//IdeaProjects//TSTNGL//src//main//java//JsonD.json"), StandardCharsets.UTF_8);
+        String jd= FileUtils.readFileToString(new File("C:\\Users\\Akash Pathak\\IdeaProjects\\Selenium_with_java-Framework\\src\\main\\java\\JsonD.json"), StandardCharsets.UTF_8);
         ObjectMapper ob= new ObjectMapper();
         List<HashMap<String,String>> s=ob.readValue(jd, new TypeReference<List<HashMap<String, String>>>() {
         });

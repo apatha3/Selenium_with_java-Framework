@@ -18,7 +18,7 @@ public class Reuseablecode {
 
     }
     public void waitsimp(By Byelements){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.visibilityOfElementLocated(Byelements));
     }
 
