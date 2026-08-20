@@ -1,6 +1,6 @@
-package Akashpathk.pageobjects;
+package pageObjectMethod.pageobjects;
 
-import Abstractcomponents.Reuseablecode;
+import Abstractcomponents.reuseablecode;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,10 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Paymentpage extends Reuseablecode {
+public class paymentpage extends reuseablecode {
     WebDriver driver;
 
-    public Paymentpage(WebDriver driver) {
+    public paymentpage(WebDriver driver) {
         super(driver);
         this.driver=driver;
         PageFactory.initElements(driver,this);

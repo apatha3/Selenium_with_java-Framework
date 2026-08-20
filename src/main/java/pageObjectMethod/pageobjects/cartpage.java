@@ -1,14 +1,14 @@
-package Akashpathk.pageobjects;
+package pageObjectMethod.pageobjects;
 
-import Abstractcomponents.Reuseablecode;
+import Abstractcomponents.reuseablecode;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Cartpage extends Reuseablecode {
+public class cartpage extends reuseablecode {
     WebDriver driver;
-    public Cartpage(WebDriver driver){
+    public cartpage(WebDriver driver){
         super(driver);
         this.driver=driver;
         PageFactory.initElements(driver,this);

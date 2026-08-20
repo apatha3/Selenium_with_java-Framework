@@ -1,16 +1,17 @@
-package Akashpathak.test;
+package tests.test;
 
-import Akashpathak.testcomponents.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-import static Akashpathak.testcomponents.BaseTest.driver;
-import static org.openqa.selenium.support.locators.RelativeLocator.with;
+import tests.testcomponents.baseTest;
 
-public class Signup extends BaseTest {
-    @Test (dependsOnMethods = "firsttest")
+import static org.openqa.selenium.support.locators.RelativeLocator.with;
+import static tests.testcomponents.baseTest.driver;
+
+public class signup extends baseTest {
+    @Test
             public void Signupp() {
         driver.findElement(By.linkText("Register here")).click();
         driver.findElement(By.id("firstName")).sendKeys("Brijesh");
