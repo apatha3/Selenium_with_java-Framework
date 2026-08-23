@@ -1,215 +1,159 @@
 # Selenium with Java Framework
 
-A Selenium WebDriver automation framework written in Java. The project uses Maven for dependency management and TestNG for test execution. It follows the Page Object Model so browser actions and page locators are separated from the test cases.
+A simple Selenium WebDriver automation framework using Java, Maven, TestNG, and the Page Object Model.
 
-## Technology Stack
+The tests run against the Rahul Shetty Academy practice shopping site:
+
+<https://rahulshettyacademy.com/client>
+
+## What Is Included
+
+- Selenium WebDriver 4.30.0 for browser automation
+- TestNG 7.11.0 for test execution
+- Maven for building and running the project
+- WebDriverManager for ChromeDriver setup
+- Page Objects for login, products, cart, and payment pages
+- Reusable waits and browser utilities
+- JSON-based login test data
+- Critical tests for invalid login, password recovery, registration validation, and orders
+- Optional MCP configuration in `.vscode/mcp.json` for Copilot Agent workflows
+
+## Project Layout
+
+```text
+pom.xml                         Dependencies and Maven commands
+testng.xml                      TestNG suite
+src/main/java/                  Page Objects and reusable components
+src/main/java/Resources/        Test data and properties
+src/test/java/tests/            Test classes and base test setup
+.vscode/mcp.json                Optional MCP server configuration
+```
+
+## Quick Start
+
+### 1. Install prerequisites
+
+Install:
 
 - Java 17 or newer
 - Maven 3.9 or newer
-- Selenium WebDriver 4.30.0
-- TestNG 7.11.0
-- Chrome browser
-- WebDriverManager 5.9.3
-- Jackson Databind for JSON test data
+- Google Chrome
+- Git
+- Internet access for Maven and ChromeDriver downloads
 
-## AI Agent Capabilities
-
-The AI coding agent in VS Code can help maintain and extend this Selenium framework. It can:
-
-- Analyze the Maven project, package structure, page objects, TestNG suite, and existing tests.
-- Diagnose compilation errors, broken imports, package mismatches, merge-conflict markers, and test-discovery problems.
-- Add Selenium WebDriver and TestNG tests using the existing Page Object Model.
-- Update page objects, locators, waits, test data handling, and reusable Selenium utilities.
-- Run Maven compilation and TestNG tests, inspect Surefire reports, and explain failures in plain language.
-- Review the target website behavior and use the observed UI to propose or automate critical test scenarios.
-- Create supporting documentation, test-case workbooks, failure summaries, and troubleshooting steps.
-
-### How the AI Agent Is Built
-
-The AI agent is provided by GitHub Copilot in VS Code; it is not compiled into this Selenium project. Its work is based on four parts:
-
-1. **Repository context**: It reads Java packages, page objects, TestNG configuration, Maven dependencies, README guidance, and relevant test reports.
-2. **Reasoning and planning**: It identifies the class or test flow that controls the requested behavior and proposes the smallest compatible change.
-3. **Development tools**: It edits source files, navigates Java symbols, runs Maven, and uses Selenium/TestNG for browser automation.
-4. **Feedback loop**: It reviews compiler output, TestNG failures, and Surefire reports, then makes targeted fixes and reruns validation.
-
-The agent follows the project’s existing Page Object Model. Test classes describe scenarios, page-object classes hold locators and browser actions, reusable components provide waits and shared utilities, and Maven/TestNG provide execution and reporting.
-
-### How to Use the AI Agent
-
-Open this repository in VS Code with GitHub Copilot enabled, then give the agent a specific task. For example:
-
-```text
-Analyze the existing Selenium tests and add a test for invalid login.
-Use the current page objects, run the focused TestNG test, and fix any failure.
-```
-
-```text
-Review all import errors in the framework, fix the package mismatches, and run
-`mvn -DskipTests test-compile` to verify the project.
-```
-
-```text
-Run the full TestNG suite, summarize failures from `target/surefire-reports`,
-and update the README with the root cause.
-```
-
-For best results, include the target class or behavior, expected result, test data, and the command or test method to validate. The agent should inspect the existing code before editing and keep changes consistent with the current Selenium, TestNG, and Page Object patterns.
-
-### Important Limits
-
-- The agent cannot safely invent valid application credentials. Keep test credentials local and test-only.
-- Browser-based tests require Chrome, ChromeDriver access through WebDriverManager, internet connectivity, and a graphical desktop session.
-- The demo website is external and may change its locators or behavior independently of this repository.
-- The agent can generate and run tests, but a passing compilation does not guarantee that every browser flow passes; always review the TestNG results.
-
-## What the Project Tests
-
-The automated tests use the demo e-commerce application at:
-
-`https://rahulshettyacademy.com/client`
-
-The current suite covers:
-
-- Login using credentials from `src/main/java/jsonD.json`
-- Product selection for `ZARA COAT 3`
-- Cart navigation and payment flow
-- Country selection during checkout
-- Product search for `IPHONE 13 PRO`
-- Adding selected products to the cart
-- Registration-page field interaction
-- Writing page text to `src/main/java/output.txt`
-
-## Project Structure
-
-```text
-.
-|-- pom.xml                         Maven configuration and dependencies
-|-- testng.xml                      TestNG suite configuration
-|-- src
-|   |-- main
-|   |   `-- java
-|   |       |-- jsonD.json          Login test data
-|   |       |-- output.txt          Generated output file
-|   |       |-- Abstractcomponents   Reusable Selenium utilities
-|   |       |-- pageObjectMethod      Page Object classes
-|   |       `-- Resources             Project properties
-|   `-- test
-|       `-- java
-|           |-- tests/test           Test classes
-|           `-- tests/testcomponents  WebDriver setup and teardown
-`-- README.md
-```
-
-## Prerequisites
-
-Install the following before running the tests:
-
-1. Java 17 or newer.
-2. Apache Maven 3.9 or newer.
-3. Google Chrome.
-4. Git.
-5. Internet access, because Maven downloads dependencies and WebDriverManager resolves the ChromeDriver.
-
-Verify Java and Maven:
+Check Java and Maven:
 
 ```bash
 java -version
 mvn -version
 ```
 
-## Clone and Run the Tests
-
-From a terminal:
+### 2. Clone the project
 
 ```bash
 git clone https://github.com/apatha3/Selenium_with_java-Framework.git
 cd Selenium_with_java-Framework
-mvn clean test
 ```
 
-The Maven Surefire plugin is configured to execute `testng.xml`, so `mvn clean test` runs the configured TestNG suite automatically.
+### 3. Configure test credentials
 
-## Run from VS Code or IntelliJ IDEA
-
-1. Clone and open the repository as a Maven project.
-2. Allow Maven to download the project dependencies.
-3. Ensure Java 17 or newer is selected as the project SDK.
-4. Open `testng.xml`.
-5. Run the suite with the TestNG runner.
-
-You can also open `src/test/java/tests/test/functionalityTest.java` and run an individual `@Test` method from the editor when the TestNG plugin is installed.
-
-## Test Data
-
-Login data is stored in:
+The login data is stored in:
 
 ```text
-src/main/java/jsonD.json
+src/main/java/Resources/JsonD.json
 ```
 
-The file must contain a JSON array with `email` and `password` values:
+Use test-only credentials that work on the practice website. Do not commit real passwords. Keep private credentials in a local ignored file when possible.
 
-```json
-[
-  {
-    "email": "your-email@example.com",
-    "password": "your-password"
-  }
-]
-```
+### 4. Run the framework
 
-Do not commit real passwords or other secrets to a public repository. Use test-only credentials or a local, ignored configuration file for private values.
-
-## Browser Execution
-
-The base test class creates a new Chrome browser before every test method and closes it afterward. WebDriverManager downloads or selects a compatible ChromeDriver automatically.
-
-Tests require a graphical desktop session. They are not currently configured for headless execution.
-
-## Troubleshooting
-
-### `mvn` is not recognized
-
-Install Apache Maven and add its `bin` directory to the Windows `PATH`. Restart the terminal and verify:
-
-```bash
-mvn -version
-```
-
-### Tests are not discovered
-
-Run the suite from the project root and confirm that `testng.xml` is present:
+From the project root, run:
 
 ```bash
 mvn clean test
 ```
 
-The class names in `testng.xml` must match the Java package and class names exactly, including capitalization.
+This command compiles the project and runs the classes listed in `testng.xml`.
 
-### ChromeDriver or browser startup fails
+Test reports are created in:
 
-Confirm that Google Chrome is installed and can start normally. Ensure the machine has internet access so WebDriverManager can obtain the required driver.
+```text
+target/surefire-reports/
+```
 
-### Login tests fail
+## Run One Test
 
-Check that the credentials in `src/main/java/jsonD.json` are valid for the application. The application itself must also be reachable from the test machine.
+To run the critical test class:
+
+```bash
+mvn -Dtest=Criticaltest test
+```
+
+You can also open a test class in VS Code and run an individual TestNG method if the TestNG extension is installed.
+
+## How the Framework Works
+
+1. `baseTest` opens Chrome before each test and closes it afterward.
+2. Test classes describe the business scenario.
+3. Page Object classes contain locators and browser actions.
+4. `Reuseablecode` provides waits and JSON data loading.
+5. TestNG runs the suite and Maven creates the reports.
+
+To add a new test, create or update a Page Object first, add a TestNG method under `src/test/java/tests/test/`, and list the class in `testng.xml`.
+
+## Use Copilot Agent with MCP
+
+The optional MCP configuration is in `.vscode/mcp.json`. It contains these servers:
+
+- `selenium` for Selenium browser workflows
+- `playwright` for general browser inspection
+- `mysql` for optional local MySQL access
+- `excel` for optional workbook operations
+
+For browser and Excel servers, install Node.js 18 or newer. For the MySQL server, install `uv` and have a local MySQL database if database access is needed. The first use downloads the MCP packages through `npx` or `uvx`.
+
+Before starting VS Code, configure these MySQL environment variables only if you use the MySQL server:
+
+```text
+MYSQL_HOST
+MYSQL_PORT
+MYSQL_USER
+MYSQL_PASSWORD
+MYSQL_DATABASE
+```
+
+Open the cloned project in VS Code, open Copilot Chat, choose **Agent**, and ask for a specific Selenium task. For example:
+
+```text
+Add a TestNG test for searching a product. Follow the existing Page Object
+Model, run the focused Maven test, and fix any compilation or locator errors.
+```
+
+The agent can inspect the project, update page objects and tests, run Maven, read test reports, and explain or fix failures. It cannot invent valid application credentials, and browser tests still require Chrome and network access.
+
+## Common Problems
+
+**`mvn` is not recognized**
+
+Install Maven and add its `bin` directory to `PATH`, then restart the terminal.
+
+**Login test fails**
+
+Check that the credentials in `src/main/java/Resources/JsonD.json` are valid for the practice site.
+
+**ChromeDriver does not start**
+
+Confirm Chrome is installed and allow WebDriverManager to download a compatible driver.
+
+**Tests are not discovered**
+
+Run commands from the project root and confirm the class name and package in `testng.xml` match the Java files exactly.
 
 ## Useful Commands
 
 ```bash
-# Compile and run the full TestNG suite
-mvn clean test
-
-# Compile the project without running tests
-mvn clean compile
-
-# Run Maven with detailed output
-mvn clean test -e
+mvn clean test                 # Build and run the full suite
+mvn -DskipTests test-compile   # Compile without running browser tests
+mvn -Dtest=Criticaltest test   # Run one test class
+mvn clean test -e              # Show detailed Maven errors
 ```
-
-## Notes
-
-- Test results are written under `target/surefire-reports/` after Maven execution.
-- Maven build output is generated under `target/` and is not committed to Git.
-- The application under test is an external demo site, so changes to that site can affect locator-based tests.

@@ -1,0 +1,42 @@
+{
+  "servers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "selenium": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@angiejones/mcp-selenium@latest"
+      ]
+    },
+    "mysql": {
+      "command": "uvx",
+      "args": [
+        "mysql-mcp-server"
+      ],
+      "env": {
+        "MYSQL_HOST": "${env:MYSQL_HOST}",
+        "MYSQL_PORT": "${env:MYSQL_PORT}",
+        "MYSQL_USER": "${env:MYSQL_USER}",
+        "MYSQL_PASSWORD": "${env:MYSQL_PASSWORD}",
+        "MYSQL_DATABASE": "${env:MYSQL_DATABASE}"
+      }
+    },
+    "excel": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "--yes",
+        "@negokaz/excel-mcp-server"
+      ],
+      "env": {
+        "EXCEL_MCP_PAGING_CELLS_LIMIT": "4000"
+      }
+    }
+  }
+  }
