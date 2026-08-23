@@ -10,7 +10,7 @@ import static Akashpathak.testcomponents.BaseTest.driver;
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
 public class Signup extends BaseTest {
-    @Test (dependsOnMethods = "firsttest")
+    @Test
             public void Signupp() {
         driver.findElement(By.linkText("Register here")).click();
         driver.findElement(By.id("firstName")).sendKeys("Brijesh");

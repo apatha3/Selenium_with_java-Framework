@@ -98,13 +98,12 @@ public class Functionalitytest extends BaseTest  {
         p1.selectdesireditems();
         p1.waitsimp(By.cssSelector("h5 b"));
         p1.gotocart();
-        
+    }
 
-
-
-}
-
-
+    @Test
+    public void learn(){
+        System.out.println("Hey I am here");
+    }
 }
 
 

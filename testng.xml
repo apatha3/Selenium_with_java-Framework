@@ -7,6 +7,7 @@
             <class name="Akashpathak.test.Functionalitytest"/>
             <class name="Akashpathak.test.Signup">
         </class>
+            <class name="Akashpathak.test.Criticaltest"/>
         </classes>
     </test>
 </suite>

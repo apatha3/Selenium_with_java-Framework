@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
@@ -36,11 +37,14 @@ public class BaseTest {
 
     @AfterMethod
     public void teardown(){
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     public List<HashMap<String,String>> jsonda() throws IOException {
-        String jd= FileUtils.readFileToString(new File("C:\\Users\\Akash Pathak\\IdeaProjects\\Selenium_with_java-Framework\\src\\main\\java\\JsonD.json"), StandardCharsets.UTF_8);
+        File jsonFile = Paths.get("src", "main", "java", "JsonD.json").toFile();
+        String jd= FileUtils.readFileToString(jsonFile, StandardCharsets.UTF_8);
         ObjectMapper ob= new ObjectMapper();
         List<HashMap<String,String>> s=ob.readValue(jd, new TypeReference<List<HashMap<String, String>>>() {
         });
