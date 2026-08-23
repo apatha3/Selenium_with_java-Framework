@@ -12,6 +12,57 @@ A Selenium WebDriver automation framework written in Java. The project uses Mave
 - WebDriverManager 5.9.3
 - Jackson Databind for JSON test data
 
+## AI Agent Capabilities
+
+The AI coding agent in VS Code can help maintain and extend this Selenium framework. It can:
+
+- Analyze the Maven project, package structure, page objects, TestNG suite, and existing tests.
+- Diagnose compilation errors, broken imports, package mismatches, merge-conflict markers, and test-discovery problems.
+- Add Selenium WebDriver and TestNG tests using the existing Page Object Model.
+- Update page objects, locators, waits, test data handling, and reusable Selenium utilities.
+- Run Maven compilation and TestNG tests, inspect Surefire reports, and explain failures in plain language.
+- Review the target website behavior and use the observed UI to propose or automate critical test scenarios.
+- Create supporting documentation, test-case workbooks, failure summaries, and troubleshooting steps.
+
+### How the AI Agent Is Built
+
+The AI agent is provided by GitHub Copilot in VS Code; it is not compiled into this Selenium project. Its work is based on four parts:
+
+1. **Repository context**: It reads Java packages, page objects, TestNG configuration, Maven dependencies, README guidance, and relevant test reports.
+2. **Reasoning and planning**: It identifies the class or test flow that controls the requested behavior and proposes the smallest compatible change.
+3. **Development tools**: It edits source files, navigates Java symbols, runs Maven, and uses Selenium/TestNG for browser automation.
+4. **Feedback loop**: It reviews compiler output, TestNG failures, and Surefire reports, then makes targeted fixes and reruns validation.
+
+The agent follows the project’s existing Page Object Model. Test classes describe scenarios, page-object classes hold locators and browser actions, reusable components provide waits and shared utilities, and Maven/TestNG provide execution and reporting.
+
+### How to Use the AI Agent
+
+Open this repository in VS Code with GitHub Copilot enabled, then give the agent a specific task. For example:
+
+```text
+Analyze the existing Selenium tests and add a test for invalid login.
+Use the current page objects, run the focused TestNG test, and fix any failure.
+```
+
+```text
+Review all import errors in the framework, fix the package mismatches, and run
+`mvn -DskipTests test-compile` to verify the project.
+```
+
+```text
+Run the full TestNG suite, summarize failures from `target/surefire-reports`,
+and update the README with the root cause.
+```
+
+For best results, include the target class or behavior, expected result, test data, and the command or test method to validate. The agent should inspect the existing code before editing and keep changes consistent with the current Selenium, TestNG, and Page Object patterns.
+
+### Important Limits
+
+- The agent cannot safely invent valid application credentials. Keep test credentials local and test-only.
+- Browser-based tests require Chrome, ChromeDriver access through WebDriverManager, internet connectivity, and a graphical desktop session.
+- The demo website is external and may change its locators or behavior independently of this repository.
+- The agent can generate and run tests, but a passing compilation does not guarantee that every browser flow passes; always review the TestNG results.
+
 ## What the Project Tests
 
 The automated tests use the demo e-commerce application at:
