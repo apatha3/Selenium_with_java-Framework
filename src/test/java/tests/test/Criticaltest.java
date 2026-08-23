@@ -1,6 +1,6 @@
-package Akashpathak.test;
+package tests.test;
 
-import Akashpathak.testcomponents.BaseTest;
+import tests.testcomponents.baseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class Criticaltest extends BaseTest {
+public class Criticaltest extends baseTest {
     private static final String VALID_EMAIL = "pathakakash006@gmail.com";
     private static final String VALID_PASSWORD = "Ap123456!";
 

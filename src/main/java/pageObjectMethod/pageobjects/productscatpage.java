@@ -1,4 +1,4 @@
-package Akashpathk.pageobjects;
+package pageObjectMethod.pageobjects;
 
 import Abstractcomponents.Reuseablecode;
 import org.openqa.selenium.By;
@@ -10,10 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class Productscatpage extends Reuseablecode {
+public class productscatpage extends Reuseablecode {
     WebDriver driver;
 
-    public Productscatpage(WebDriver driver) {
+    public productscatpage(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
