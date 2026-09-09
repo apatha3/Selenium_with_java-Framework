@@ -2,9 +2,8 @@
 
 A simple Selenium WebDriver automation framework using Java, Maven, TestNG, and the Page Object Model.
 
-The tests run against the Rahul Shetty Academy practice shopping site:
+The tests run against DUMMY E-COMMERECE site:
 
-<https://rahulshettyacademy.com/client>
 
 ## What Is Included
 
